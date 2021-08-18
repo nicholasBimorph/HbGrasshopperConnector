@@ -53,6 +53,9 @@ namespace GrasshopperHbConnector
 
             DA.GetDataList(0, ghMeshes);
 
+
+            _cooooc.Goo();
+
             foreach (var VARIABLE in COLLECTION)
             {
                 
