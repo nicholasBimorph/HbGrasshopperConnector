@@ -2,6 +2,10 @@
 using Rhino.Geometry;
 using System;
 using System.Collections.Generic;
+using GHHBConnector.Core;
+using HB.RestAPI.Core.Services;
+using HB.RestAPI.Core.Models;
+using HB.RestAPI.Core.Types;
 
 // In order to load the result of this wizard, you will also need to
 // add the output bin/ folder of this project to the list of loaded
@@ -10,7 +14,7 @@ using System.Collections.Generic;
 
 namespace GrasshopperHbConnector
 {
-    public class HbServerSender : GH_Component
+    public class HbServerSenderComponent : GH_Component
     {
         /// <summary>
         /// Each implementation of GH_Component must provide a public 
@@ -19,7 +23,7 @@ namespace GrasshopperHbConnector
         /// Subcategory the panel. If you use non-existing tab or panel names, 
         /// new tabs/panels will automatically be created.
         /// </summary>
-        public HbServerSender()
+        public HbServerSenderComponent()
           : base("HbServerSender", "Sender",
               "Description",
               "Hb Server Connector", "Sender")
@@ -51,15 +55,31 @@ namespace GrasshopperHbConnector
         {
             var ghMeshes = new List<Mesh>();
 
+            string projectStream = "";
+
+            var ghmeshConverter = new GHMeshConverter();
+
+            var serializer = new JsonSerializer();
+
             DA.GetDataList(0, ghMeshes);
+            DA.GetData(1, ref projectStream);
 
+            var dataNodes = new List<DataNode>(ghMeshes.Count);
 
-            _cooooc.Goo();
-
-            foreach (var VARIABLE in COLLECTION)
+            foreach (var ghMesh in ghMeshes)
             {
-                
+               var hbMesh = ghmeshConverter.ToHbMesh(ghMesh);
+
+               string hbMeshJson = serializer.Serialize(hbMesh);
+
+                var dataNode = new DataNode(hbMeshJson,typeof(HbMesh));
+
+                dataNodes.Add(dataNode);
             }
+
+            var applicationDataContainer = new ApplicationDataContainer(dataNodes, projectStream);
+
+
 
         }
 

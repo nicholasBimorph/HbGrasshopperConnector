@@ -32,9 +32,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HB.RestAPI.Core">
-      <HintPath>..\HB.RestAPI\HB.RestAPI.Core\bin\Debug\netstandard2.0\HB.RestAPI.Core.dll</HintPath>
+    <Reference Include="GHHBConnector.Core">
+      <HintPath>GHHBConnector.Core\bin\Debug\GHHBConnector.Core.dll</HintPath>
     </Reference>
+    <Reference Include="HB.RestAPI.Core">
+      <HintPath>..\RESTAPISample\HB.RestAPI.Core\bin\Debug\netstandard2.0\HB.RestAPI.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
@@ -59,10 +63,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HbServerSender.cs" />
+    <Compile Include="Components\HbServerSenderComponent.cs" />
     <Compile Include="GrasshopperHbConnectorInfo.cs" />
+    <Compile Include="Components\MeshConverterComponent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
