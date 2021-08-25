@@ -2,8 +2,8 @@ C:\Users\nicho\Documents\Bimorph\Clients\HB\Workshops\HbGrasshopperConnector\GHH
 C:\Users\nicho\Documents\Bimorph\Clients\HB\Workshops\HbGrasshopperConnector\GHHBConnector.Core\bin\Debug\GHHBConnector.Core.pdb
 C:\Users\nicho\Documents\Bimorph\Clients\HB\Workshops\HbGrasshopperConnector\GHHBConnector.Core\bin\Debug\HB.RestAPI.Core.dll
 C:\Users\nicho\Documents\Bimorph\Clients\HB\Workshops\HbGrasshopperConnector\GHHBConnector.Core\bin\Debug\HB.RestAPI.Core.pdb
-C:\Users\nicho\Documents\Bimorph\Clients\HB\Workshops\HbGrasshopperConnector\GHHBConnector.Core\obj\Debug\GHHBConnector.Core.csprojAssemblyReference.cache
 C:\Users\nicho\Documents\Bimorph\Clients\HB\Workshops\HbGrasshopperConnector\GHHBConnector.Core\obj\Debug\GHHBConnector.Core.csproj.CoreCompileInputs.cache
 C:\Users\nicho\Documents\Bimorph\Clients\HB\Workshops\HbGrasshopperConnector\GHHBConnector.Core\obj\Debug\GHHBConnector.Core.csproj.CopyComplete
 C:\Users\nicho\Documents\Bimorph\Clients\HB\Workshops\HbGrasshopperConnector\GHHBConnector.Core\obj\Debug\GHHBConnector.Core.dll
 C:\Users\nicho\Documents\Bimorph\Clients\HB\Workshops\HbGrasshopperConnector\GHHBConnector.Core\obj\Debug\GHHBConnector.Core.pdb
+C:\Users\nicho\Documents\Bimorph\Clients\HB\Workshops\HbGrasshopperConnector\GHHBConnector.Core\obj\Debug\GHHBConnector.Core.csprojAssemblyReference.cache

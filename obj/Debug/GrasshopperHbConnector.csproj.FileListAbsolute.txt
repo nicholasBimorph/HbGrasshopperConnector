@@ -1,0 +1,8 @@
+C:\Users\nicho\Documents\Bimorph\Clients\HB\Workshops\HbGrasshopperConnector\obj\Debug\GrasshopperHbConnector.csproj.CoreCompileInputs.cache
+C:\Users\nicho\Documents\Bimorph\Clients\HB\Workshops\HbGrasshopperConnector\bin\GrasshopperHbConnector.dll
+C:\Users\nicho\Documents\Bimorph\Clients\HB\Workshops\HbGrasshopperConnector\bin\GrasshopperHbConnector.pdb
+C:\Users\nicho\Documents\Bimorph\Clients\HB\Workshops\HbGrasshopperConnector\bin\HB.RestAPI.Core.dll
+C:\Users\nicho\Documents\Bimorph\Clients\HB\Workshops\HbGrasshopperConnector\bin\HB.RestAPI.Core.pdb
+C:\Users\nicho\Documents\Bimorph\Clients\HB\Workshops\HbGrasshopperConnector\obj\Debug\GrasshopperHbConnector.csproj.CopyComplete
+C:\Users\nicho\Documents\Bimorph\Clients\HB\Workshops\HbGrasshopperConnector\obj\Debug\GrasshopperHbConnector.dll
+C:\Users\nicho\Documents\Bimorph\Clients\HB\Workshops\HbGrasshopperConnector\obj\Debug\GrasshopperHbConnector.pdb

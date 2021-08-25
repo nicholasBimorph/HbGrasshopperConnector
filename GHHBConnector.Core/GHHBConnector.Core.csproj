@@ -53,4 +53,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
+  <!--<Target Name="AfterBuild">
+    <ItemGroup>
+      <SourceDlls Include="$(TargetDir)*.dll" />
+      <SourcePdbs Include="$(TargetDir)*.pdb" />
+    </ItemGroup>
+    <Copy SourceFiles="@(SourceDlls)" DestinationFolder="C:\Program Files\Rhino 7\Plug-ins\Sybarite Toolbar\" />
+    <Copy SourceFiles="@(SourcePdbs)" DestinationFolder="C:\Program Files\Rhino 7\Plug-ins\SyncIO\" />
+  </Target>-->
+
 </Project>

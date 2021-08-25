@@ -5,7 +5,9 @@ using System.Collections.Generic;
 using GHHBConnector.Core;
 using HB.RestAPI.Core.Services;
 using HB.RestAPI.Core.Models;
+using HB.RestAPI.Core.Settings;
 using HB.RestAPI.Core.Types;
+using Rhino;
 
 // In order to load the result of this wizard, you will also need to
 // add the output bin/ folder of this project to the list of loaded
@@ -14,8 +16,13 @@ using HB.RestAPI.Core.Types;
 
 namespace GrasshopperHbConnector
 {
+    
     public class HbServerSenderComponent : GH_Component
     {
+        private readonly HBApiClient _hbApiClient;
+
+        private const string AsyncPostEndpoint = HbApiEndPoints.AsyncPostEndPoint;
+
         /// <summary>
         /// Each implementation of GH_Component must provide a public 
         /// constructor without any arguments.
@@ -26,8 +33,10 @@ namespace GrasshopperHbConnector
         public HbServerSenderComponent()
           : base("HbServerSender", "Sender",
               "Description",
-              "Hb Server Connector", "Sender")
+              "Hb Connector", "Sender")
         {
+           
+            _hbApiClient = new HBApiClient(new JsonSerializer());
         }
 
         /// <summary>
@@ -35,7 +44,9 @@ namespace GrasshopperHbConnector
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddMeshParameter("Mesh", "M", "A grasshopper mesh", GH_ParamAccess.list);
+            pManager.AddGenericParameter("Data nodes", "D", "A collection of data nodes to send.", GH_ParamAccess.list);
+
+            pManager.AddTextParameter("Project stream", "S", "", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -53,33 +64,22 @@ namespace GrasshopperHbConnector
         /// to store data in output parameters.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            var ghMeshes = new List<Mesh>();
+            var dataNodes = new List<DataNode>();
 
             string projectStream = "";
 
-            var ghmeshConverter = new GHMeshConverter();
+            DA.GetDataList(0, dataNodes);
 
-            var serializer = new JsonSerializer();
-
-            DA.GetDataList(0, ghMeshes);
             DA.GetData(1, ref projectStream);
-
-            var dataNodes = new List<DataNode>(ghMeshes.Count);
-
-            foreach (var ghMesh in ghMeshes)
-            {
-               var hbMesh = ghmeshConverter.ToHbMesh(ghMesh);
-
-               string hbMeshJson = serializer.Serialize(hbMesh);
-
-                var dataNode = new DataNode(hbMeshJson,typeof(HbMesh));
-
-                dataNodes.Add(dataNode);
-            }
 
             var applicationDataContainer = new ApplicationDataContainer(dataNodes, projectStream);
 
+           var task =  _hbApiClient.AsyncPostRequest(AsyncPostEndpoint, applicationDataContainer);
 
+           if(!task.IsCompleted)
+                RhinoApp.Wait();
+
+           DA.SetData(0, "Successfully sent!");
 
         }
 

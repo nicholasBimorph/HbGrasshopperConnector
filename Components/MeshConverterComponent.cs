@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using GHHBConnector.Core;
 using Grasshopper.Kernel;
+using HB.RestAPI.Core.Models;
+using HB.RestAPI.Core.Services;
+using HB.RestAPI.Core.Types;
 using Rhino.Geometry;
+
 
 namespace GrasshopperHbConnector
 {
@@ -12,9 +16,9 @@ namespace GrasshopperHbConnector
         /// Initializes a new instance of the MeshConverter class.
         /// </summary>
         public MeshConverterComponent()
-           : base("HbServerSender", "Sender",
+           : base("HbMeshConverter", "MC",
               "Description",
-              "Hb Server Connector", "Sender")
+              "Hb Connector", "Converters")
         {
         }
 
@@ -23,6 +27,7 @@ namespace GrasshopperHbConnector
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
+            pManager.AddMeshParameter("Mesh", "M", "A grasshopper mesh", GH_ParamAccess.list);
         }
 
         /// <summary>
@@ -30,6 +35,7 @@ namespace GrasshopperHbConnector
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
+            pManager.AddGenericParameter("Data nodes", "D", "A collection of data nodes.", GH_ParamAccess.list);
         }
 
         /// <summary>
@@ -38,6 +44,28 @@ namespace GrasshopperHbConnector
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
+            var ghMeshes = new List<Mesh>();
+
+            var ghmeshConverter = new GHMeshConverter();
+
+            var serializer = new JsonSerializer();
+
+            DA.GetDataList(0, ghMeshes);
+
+            var dataNodes = new List<DataNode>(ghMeshes.Count);
+
+            foreach (var ghMesh in ghMeshes)
+            {
+                var hbMesh = ghmeshConverter.ToHbMesh(ghMesh);
+
+                string hbMeshJson = serializer.Serialize(hbMesh);
+
+                var dataNode = new DataNode(hbMeshJson, typeof(HbMesh));
+
+                dataNodes.Add(dataNode);
+            }
+
+            DA.SetDataList(0, dataNodes);
         }
 
         /// <summary>
