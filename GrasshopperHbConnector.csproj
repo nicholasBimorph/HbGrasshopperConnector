@@ -80,7 +80,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>Copy "$(TargetPath)" "C:\Users\nicho\AppData\Roaming\Grasshopper\Libraries\HBConnector\GrasshopperHbConnector.gha"
+    <PostBuildEvent>Copy "$(TargetPath)" %25AppData%25\Grasshopper\Libraries\HbConnector\GrasshopperHbConnector.gha"
 Erase "$(TargetPath)"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>

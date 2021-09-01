@@ -7,20 +7,22 @@ using HB.RestAPI.Core.Interfaces;
 using Rhino.Geometry;
 using System.Drawing;
 using HB.RestAPI.Core.Types;
+using HbConnector.Core.Interfaces;
 
 namespace GHHBConnector.Core
 {
     // TODO: Create HBConnector.Core repo
-    public class GHMeshConverter //: IGeometryConverter<T>
+    public class GHMeshConverter : IGeometryConverter<Mesh>
     {
-        public IHbObject ToHbMesh(Mesh mesh)
+       
+        public IHbObject ToHbType(Mesh mesh)
         {
             if (!mesh.IsValid)
                 throw new ArgumentException("Mesh is not valid!");
-          
-          var vertices =  mesh.Vertices;
 
-          var faces = mesh.Faces;
+            var vertices = mesh.Vertices;
+
+            var faces = mesh.Faces;
 
             var colors = mesh.VertexColors;
 
@@ -47,11 +49,11 @@ namespace GHHBConnector.Core
             {
                 var face = faces[i];
 
-                if(face.IsQuad)                
-                    hbMeshFaces[i] = new int [] { face.A, face.B, face.C };
-                
-                if(face.IsTriangle)
-                    hbMeshFaces[i] = new int [] { face.A, face.B, face.C, face.D};
+                if (face.IsQuad)
+                    hbMeshFaces[i] = new[] { face.A, face.B, face.C };
+
+                if (face.IsTriangle)
+                    hbMeshFaces[i] = new[] { face.A, face.B, face.C, face.D };
             }
 
             for (int i = 0; i < totalColors; i++)

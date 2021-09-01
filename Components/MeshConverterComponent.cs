@@ -12,6 +12,10 @@ namespace GrasshopperHbConnector
 {
     public class MeshConverterComponent : GH_Component
     {
+        private readonly GHMeshConverter _ghmeshConverter;
+
+        private readonly JsonSerializer _serializer;
+
         /// <summary>
         /// Initializes a new instance of the MeshConverter class.
         /// </summary>
@@ -20,6 +24,9 @@ namespace GrasshopperHbConnector
               "Description",
               "Hb Connector", "Converters")
         {
+            _ghmeshConverter = new GHMeshConverter();
+
+            _serializer = new JsonSerializer();
         }
 
         /// <summary>
@@ -46,19 +53,15 @@ namespace GrasshopperHbConnector
         {
             var ghMeshes = new List<Mesh>();
 
-            var ghmeshConverter = new GHMeshConverter();
-
-            var serializer = new JsonSerializer();
-
             DA.GetDataList(0, ghMeshes);
 
             var dataNodes = new List<DataNode>(ghMeshes.Count);
 
             foreach (var ghMesh in ghMeshes)
             {
-                var hbMesh = ghmeshConverter.ToHbMesh(ghMesh);
+                var hbMesh = _ghmeshConverter.ToHbMesh(ghMesh);
 
-                string hbMeshJson = serializer.Serialize(hbMesh);
+                string hbMeshJson = _serializer.Serialize(hbMesh);
 
                 var dataNode = new DataNode(hbMeshJson, typeof(HbMesh));
 

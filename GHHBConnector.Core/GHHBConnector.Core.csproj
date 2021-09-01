@@ -33,6 +33,11 @@
   <ItemGroup>
     <Reference Include="HB.RestAPI.Core">
       <HintPath>..\..\RESTAPISample\HB.RestAPI.Core\bin\Debug\netstandard2.0\HB.RestAPI.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="HbConnector.Core">
+      <HintPath>..\..\HbConnector.Core\HbConnector.Core\bin\Debug\HbConnector.Core.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="RhinoCommon">
       <HintPath>..\..\..\..\..\..\..\..\..\Program Files\Rhino 7\System\RhinoCommon.dll</HintPath>
@@ -53,7 +58,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /y /d "$(ProjectDir)$(OutDir)" "%25AppData%25\Grasshopper\Libraries\HbConnector"</PostBuildEvent>
+  </PropertyGroup>
   <!--<Target Name="AfterBuild">
     <ItemGroup>
       <SourceDlls Include="$(TargetDir)*.dll" />
@@ -62,5 +69,4 @@
     <Copy SourceFiles="@(SourceDlls)" DestinationFolder="C:\Program Files\Rhino 7\Plug-ins\Sybarite Toolbar\" />
     <Copy SourceFiles="@(SourcePdbs)" DestinationFolder="C:\Program Files\Rhino 7\Plug-ins\SyncIO\" />
   </Target>-->
-
 </Project>
