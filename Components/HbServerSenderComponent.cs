@@ -7,6 +7,7 @@ using HB.RestAPI.Core.Services;
 using HB.RestAPI.Core.Models;
 using HB.RestAPI.Core.Settings;
 using HB.RestAPI.Core.Types;
+using HbConnector.Core.Settings;
 using Rhino;
 
 // In order to load the result of this wizard, you will also need to
@@ -66,13 +67,13 @@ namespace GrasshopperHbConnector
         {
             var dataNodes = new List<DataNode>();
 
-            string projectStream = "";
+           // string projectStream = "";
 
             DA.GetDataList(0, dataNodes);
 
-            DA.GetData(1, ref projectStream);
+           // DA.GetData(1, ref projectStream);
 
-            var applicationDataContainer = new ApplicationDataContainer(dataNodes, projectStream);
+            var applicationDataContainer = new ApplicationDataContainer(dataNodes, TemporaryProjectStream.ProjectStream);
 
            var task =  _hbApiClient.AsyncPostRequest(AsyncPostEndpoint, applicationDataContainer);
 

@@ -40,6 +40,10 @@
     <Reference Include="HB.RestAPI.Core">
       <HintPath>..\RESTAPISample\HB.RestAPI.Core\bin\Debug\netstandard2.0\HB.RestAPI.Core.dll</HintPath>
     </Reference>
+    <Reference Include="HbConnector.Core">
+      <HintPath>..\HbConnector.Core\HbConnector.Core\bin\Debug\HbConnector.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
