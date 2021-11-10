@@ -6,4 +6,4 @@ C:\Users\nicho\Documents\Bimorph\Clients\HB\Workshops\HbGrasshopperConnector\bin
 C:\Users\nicho\Documents\Bimorph\Clients\HB\Workshops\HbGrasshopperConnector\obj\Debug\GrasshopperHbConnector.csproj.CopyComplete
 C:\Users\nicho\Documents\Bimorph\Clients\HB\Workshops\HbGrasshopperConnector\obj\Debug\GrasshopperHbConnector.dll
 C:\Users\nicho\Documents\Bimorph\Clients\HB\Workshops\HbGrasshopperConnector\obj\Debug\GrasshopperHbConnector.pdb
-C:\Users\nicho\Documents\Bimorph\Clients\HB\Workshops\HbGrasshopperConnector\obj\Debug\GrasshopperHbConnector.csprojAssemblyReference.cache
+C:\Users\nicho\Documents\Bimorph\Clients\HB\Workshops\HbGrasshopperConnector\obj\Debug\GrasshopperHbConnector.csproj.AssemblyReference.cache

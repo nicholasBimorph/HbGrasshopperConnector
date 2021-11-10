@@ -50,10 +50,10 @@ namespace GHHBConnector.Core
                 var face = faces[i];
 
                 if (face.IsQuad)
-                    hbMeshFaces[i] = new[] { face.A, face.B, face.C };
+                    hbMeshFaces[i] = new[] { face.A, face.B, face.C, face.D };
 
                 if (face.IsTriangle)
-                    hbMeshFaces[i] = new[] { face.A, face.B, face.C, face.D };
+                    hbMeshFaces[i] = new[] { face.A, face.B, face.C};
             }
 
             for (int i = 0; i < totalColors; i++)

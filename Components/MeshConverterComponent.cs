@@ -59,7 +59,8 @@ namespace GrasshopperHbConnector
 
             foreach (var ghMesh in ghMeshes)
             {
-                var hbMesh = _ghmeshConverter.ToHbMesh(ghMesh);
+            
+                var hbMesh = _ghmeshConverter.ToHbType(ghMesh);
 
                 string hbMeshJson = _serializer.Serialize(hbMesh);
 
